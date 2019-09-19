@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}SignUp Page{% endblock title %}
-
-{% block content %} 
-    <h2>SignUp</h2>
+{% block content %}
     <form method="post" action="{% url 'signup' %}">
         {% csrf_token %}
                     {% for non_field_error in form.non_field_errors %}

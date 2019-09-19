@@ -7,8 +7,16 @@ from django.contrib.auth.forms import AuthenticationForm, UsernameField
 
 # Sign Up Form
 class SignUpForm(UserCreationForm):
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input'}))
-    password2 = forms.CharField(label="Repeat password", widget=forms.PasswordInput(attrs={'class': 'input'}))
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'class':'form-control', 'placeholder':'Username'}
+    ), required=True, max_length=50)
+    email = forms.CharField(widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email'}
+    ), required=True, max_length=50)
+    password1 = forms.CharField(widget=forms.PasswordInput(
+        attrs={'class': 'input', 'placeholder': 'Password 1'}),required=True)
+    password2 = forms.CharField(label="Repeat password", widget=forms.PasswordInput(
+        attrs={'class': 'input', 'placeholder': 'Password 2'}),required=True)
 
     class Meta:
         model = User
@@ -38,8 +46,6 @@ class ProfileForm(forms.ModelForm):
         model = User
         fields = [
             'username',
-            'first_name',
-            'last_name',
             'email',
             ]
 

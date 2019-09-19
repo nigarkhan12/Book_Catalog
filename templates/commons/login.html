@@ -6,7 +6,6 @@
     <h2>Login</h2>
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-        {% csrf_token %}
                     {% for non_field_error in form.non_field_errors %}
                         <p class="help is-danger">{{ non_field_error }}</p>
                     {% endfor %}

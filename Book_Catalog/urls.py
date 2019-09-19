@@ -23,7 +23,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
-# Login and Logout
+
+    # Login and Logout
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='commons/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
 
@@ -40,7 +41,7 @@ urlpatterns = [
         name='change_password'
     ),
 
-    # Forget Password
+    # Forgot Password
     path('password-reset/',
          auth_views.PasswordResetView.as_view(
              template_name='commons/password-reset/password_reset.html',
@@ -64,5 +65,8 @@ urlpatterns = [
              template_name='commons/password-reset/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+
+    #Social Auth
+    path('auth/', include('social_django.urls', namespace='social')),
 ]
 
