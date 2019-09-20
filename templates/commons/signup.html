@@ -1,20 +1,36 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <form method="post" action="{% url 'signup' %}">
-        {% csrf_token %}
-                    {% for non_field_error in form.non_field_errors %}
-                        <p class="help is-danger">{{ non_field_error }}</p>
-                    {% endfor %}
-                    {% for field in form %}
-                        <div class="field">
-                            <label for="{{ field.id_for_label }}" class="label">{{ field.html_name }}</label>
-                            {{ field }}
-                        {% for error in field.errors %}
-                            <p class="help is-danger">{{ error }}</p>
-                        {% endfor %}
-                        </div>
-                    {% endfor %}
-                    <input type="submit" value="SIGN UP" class="button is-primary">
-    </form>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="/static/css/signup.css"/>
+    <link rel="shortcut icon" href="static/images/logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="login-box">
+        <div class="left-box">
+            <h1>Sign Up</h1>
+            <form action="{% url 'signup' %}" method="post">
+            <div class="input-box">{{ form.username }}</div>
+                                     {{ username.errors }}
+            <div class="input-box">{{ form.email }}</div>
+                                    {{ email.errors}}
+            <div class="input-box">{{ form.password1 }}</div>
+                                    {{ password1.errors }}
+            <div class="input-box">{{ form.password2 }}</div>
+                                    {{ password1.errors }}
+            <input type="submit" class="submit-btn" value="Sign in">
+            </form>
+        </div>
+        <div class="right-box">
+            <span class="right-title">Sign Up with <br> Social Network</span>
+            <button class="social google">Login with Google+</button>
+            <button class="social github fa fa-github">Login with Github</button>
+        </div>
+        <div class="or">
+            OR
+        </div>
+    </div>
+</body>
+</html>

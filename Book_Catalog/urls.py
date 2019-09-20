@@ -25,7 +25,7 @@ urlpatterns = [
     path('api/', include('users.urls')),
 
     # Login and Logout
-    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='commons/login.html'), name='login'),
+    # path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='commons/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
 
     # Main Page
@@ -66,7 +66,7 @@ urlpatterns = [
          ),
          name='password_reset_complete'),
 
-    #Social Auth
+    # Social Auth
     path('auth/', include('social_django.urls', namespace='social')),
 ]
 

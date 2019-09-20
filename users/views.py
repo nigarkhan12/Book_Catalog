@@ -23,7 +23,7 @@ from users.tokens import account_activation_token
 # Sign Up View
 class SignUpView(View):
     form_class = SignUpForm
-    template_name = 'index.html'
+    template_name = 'commons/signup.html'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -84,7 +84,7 @@ class ProfileView(UpdateView):
 
 class LoginUserView(LoginView):
     form_class = LoginForm
-    template_name = "index.html"
+    template_name = "commons/login.html"
     redirect_authenticated_user = True
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('main')
 

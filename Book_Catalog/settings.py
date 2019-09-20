@@ -108,15 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'nigarkhan92@gmail.com'
-EMAIL_HOST_PASSWORD = 'pzrvftwtvagwkesi'
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -139,3 +131,6 @@ os.path.join(BASE_DIR, 'static'),
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = '/api/login/'
+LOGIN_URL = '/login/'
