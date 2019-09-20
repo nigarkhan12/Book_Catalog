@@ -30,6 +30,12 @@ body {
 .box .inputBox {
     position: relative;
 }
+.forgotpwd{
+    font-size: 120%;
+    margin-bottom: 40px;
+    color:#fff;
+    background: transparent;
+}
 
 .box .inputBox input {
     width: 100%;

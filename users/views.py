@@ -49,7 +49,6 @@ class SignUpView(View):
             messages.success(request, ('Please Confirm your email to complete registration.'))
 
             return redirect('login')
-
         return render(request, self.template_name, {'form': form})
 
 

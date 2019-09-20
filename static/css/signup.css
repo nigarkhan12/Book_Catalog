@@ -115,3 +115,6 @@ h1{
     margin-top: 10%;
     background: #333;
 }
+.is-danger {
+  color: #ff3860;
+}
