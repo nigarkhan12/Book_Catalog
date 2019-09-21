@@ -4,27 +4,50 @@
         <title>Login</title>
         <link rel="stylesheet" href="../../static/css/login.css"/>
         <link rel="shortcut icon" href="../../static/images/logo.png" type="image/x-icon"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 <html>
     <body>
+        <div class="login-box">
         <div class="box">
             <h2>Login</h2>
-            <form>
+            <form method="post">
+                {% csrf_token %}
                 <div class="inputBox">
-                    <input type="text" name="" required="">
-                    <label>username</label>
+                    {{ form.username }}
+                    <label>Username</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="" required="">
-                    <label>password</label>
+                    {{ form.password }}
+
+                    <label>Password</label>
                 </div>
                 <div class="form-group">
 				       <div class="col-md-12 control">
-					     <span class="forgotpwd"><a href="#">Forgot Password?</a></span>
+					     <span class="forgotpwd"><a href="{% url 'password_reset' %}">Forgot Password?</a></span>
 					   </div>
                 </div>
                 <input type="submit" name="" value="submit" style="margin-top: 10px">
             </form>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert" style="color:#FF0000">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="right-box">
+            <span class="right-title">Login with <br> Social Network</span>
+            <button class="social google">
+                <a href="{% url 'social:begin' 'google-oauth2' %}">
+                   Login  with Google+</a>
+            </button>
+            <button class="social github fa fa-github" >
+                <span style="color:#fff"><a href="{% url 'social:begin' 'github' %}">Login with Github</a></span>
+            </button>
+        </div>
+        <div class="or">
+            OR
+        </div>
         </div>
     </body>
 </html>

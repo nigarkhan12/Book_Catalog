@@ -52,6 +52,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.github.GithubOAuth2',  # for Github authentication
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'Book_Catalog.urls'
 
 TEMPLATES = [
@@ -87,8 +96,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='744956192815-61h5o46u3ml2164a1smmvav2chho5jrd.ap
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'H5Mbm6hAHEBpHYOhCQvBVD4G'
 
 
-SOCIAL_AUTH_GITHUB_KEY = 'c7587386b07cf773d4ec'
-SOCIAL_AUTH_GITHUB_SECRET = '6b9fa957702b5c0217fa8ce6e6d0f28a240d7899'
+SOCIAL_AUTH_GITHUB_KEY = '1fecf36da6ef6a38188b'
+SOCIAL_AUTH_GITHUB_SECRET = '1de49674e044e5b8565f4f1585f99500cd234f65'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -108,6 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# This will display email in Console.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LANGUAGE_CODE = 'en-us'
@@ -132,5 +142,7 @@ os.path.join(BASE_DIR, 'static'),
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = '/api/login/'
-LOGIN_URL = '/login/'
+
+# Page to go after successful login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'

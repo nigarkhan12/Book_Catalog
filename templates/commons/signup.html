@@ -19,13 +19,18 @@
                     {% endfor %}
                 {% endfor %}
 
-            <input type="submit" class="submit-btn" value="Sign ">
+            <input type="submit" class="submit-btn" value="Register">
             </form>
         </div>
         <div class="right-box">
             <span class="right-title">Sign Up with <br> Social Network</span>
-            <button class="social google">Login with Google+</button>
-            <button class="social github fa fa-github">Login with Github</button>
+            <button class="social google">
+                <a href="{% url 'social:begin' 'google-oauth2' %}">
+                    Sign Up with Google+</a>
+            </button>
+            <button class="social github fa fa-github">
+                <a href="{% url 'social:begin' 'github' %}">Sign Up with Github</a>
+            </button>
         </div>
         <div class="or">
             OR

@@ -38,6 +38,14 @@ class SignUpForm(UserCreationForm):
 
         return cd['password2']
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email:
+            if User.objects.filter(email=email).exists():
+                raise forms.ValidationError('This email has already registered with us.')
+        return email
+
+
 
 # Profile Form
 class ProfileForm(forms.ModelForm):
@@ -50,8 +58,8 @@ class ProfileForm(forms.ModelForm):
             ]
 
 
-class LoginForm(AuthenticationForm):
-    username = UsernameField(
-        widget=forms.TextInput(attrs={'class': 'input', 'autofocus': True, 'placeholder': 'username'})
-    )
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}))
+# class LoginForm(AuthenticationForm):
+#     username = UsernameField(
+#         widget=forms.TextInput(attrs={'class': 'input', 'autofocus': True, 'placeholder': 'username'})
+#     )
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}))

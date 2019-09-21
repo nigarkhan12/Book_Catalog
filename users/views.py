@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import View, UpdateView
-from users.forms import SignUpForm, ProfileForm, LoginForm
+from users.forms import SignUpForm, ProfileForm
 from django.contrib.auth.models import User
 
 from django.contrib import messages
@@ -10,7 +10,6 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 from django.contrib.auth.views import LoginView
-
 
 
 from django.contrib.auth import login
@@ -31,6 +30,7 @@ class SignUpView(View):
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False # Deactivate account till it is confirmed
@@ -46,7 +46,7 @@ class SignUpView(View):
             })
             user.email_user(subject, message)
 
-            messages.success(request, ('Please Confirm your email to complete registration.'))
+            messages.success(request, ('Please Confirm your email to complete registration. By copy paste the url from console to browser.'))
 
             return redirect('login')
         return render(request, self.template_name, {'form': form})
@@ -80,10 +80,4 @@ class ProfileView(UpdateView):
     success_url = reverse_lazy('home')
     template_name = 'commons/profile.html'
 
-
-class LoginUserView(LoginView):
-    form_class = LoginForm
-    template_name = "commons/login.html"
-    redirect_authenticated_user = True
-    success_url = reverse_lazy('main')
 
