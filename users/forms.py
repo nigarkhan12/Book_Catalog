@@ -56,10 +56,3 @@ class ProfileForm(forms.ModelForm):
             'username',
             'email',
             ]
-
-
-# class LoginForm(AuthenticationForm):
-#     username = UsernameField(
-#         widget=forms.TextInput(attrs={'class': 'input', 'autofocus': True, 'placeholder': 'username'})
-#     )
-#     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}))

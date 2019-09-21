@@ -14,15 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from django.contrib.auth import views as auth_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.views.generic import RedirectView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
+    path('binder/', include('binder.urls')),
 
     # Login and Logout
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='commons/login.html'), name='login'),
@@ -71,5 +74,12 @@ urlpatterns = [
 
     # Social Auth
     path('auth/', include('social_django.urls', namespace='social')),
+
+    # path('binder/', include('binder.urls')),
+# path('', RedirectView.as_view(url='/', permanent=True)),
+
+    # path('', RedirectView.as_view(url='/', permanent=True)),
+
 ]
 
+urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
