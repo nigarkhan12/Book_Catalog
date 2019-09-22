@@ -3,7 +3,8 @@
 {% block content %}
 
 <h1>Author List</h1>
-
+<section>
+    <nav class="cl-effect-14">
 {% if author_list %}
   <ul>
 
@@ -16,6 +17,8 @@
   {% endfor %}
 
  </ul>
+      </nav>
+    </section>
 {% else %}
   <p>There are no authors available.</p>
 {% endif %}

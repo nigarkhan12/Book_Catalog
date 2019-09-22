@@ -66,6 +66,7 @@ class BookInstance(models.Model):
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    cover_image = models.ImageField(upload_to='books/', default='books/empty_cover.jpg')
 
     @property
     def is_overdue(self):
@@ -113,3 +114,8 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return '{0}, {1}'.format(self.last_name, self.first_name)
+
+
+def cover_upload_path(instance, filename):
+    return '/'.join(['books', str(instance.id), filename])
+

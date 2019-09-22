@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import View, UpdateView
-from users.forms import SignUpForm, ProfileForm
+from users.forms import SignUpForm, ProfileForm, ReviewForm
 from django.contrib.auth.models import User
 
 from django.contrib import messages
@@ -13,10 +13,17 @@ from django.contrib.auth.views import LoginView
 
 
 from django.contrib.auth import login
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
 from users.tokens import account_activation_token
+
+from .models import Review
+from binder.models import Book
+import logging
+log = logging.getLogger(__name__)
+
 
 
 # Sign Up View
@@ -79,5 +86,29 @@ class ProfileView(UpdateView):
     form_class = ProfileForm
     success_url = reverse_lazy('home')
     template_name = 'commons/profile.html'
+
+
+# Book Review View
+def book_reviews(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    context = {
+        'book': book,
+    }
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                new_review = Review.objects.create(
+                    user=request.user,
+                    book=context['book'],
+                    text=form.cleaned_data.get('text')
+                )
+                new_review.save()
+        else:
+            if Review.objects.filter(user=request.user, book=context['book']).count() == 0:
+                form = ReviewForm()
+                context['form'] = form
+        context['reviews'] = book.review_set.all()
+    return render(request, 'reviews.html', context)
 
 

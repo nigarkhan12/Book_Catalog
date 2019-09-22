@@ -8,9 +8,7 @@
 <p><strong>Summary:</strong> {{ book.summary }}</p>
 <p><strong>ISBN:</strong> {{ book.isbn }}</p> 
 <p><strong>Language:</strong> {{ book.language }}</p>  
-<p><strong>Genre:</strong> {% for genre in book.genre.all %}{{genre}}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  
-
-<div style="margin-left:20px;margin-top:20px">
+<p><strong>Genre:</strong> {% for genre in book.genre.all %}{{genre}}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 <h4>Copies</h4>
 
 {% for copy in book.bookinstance_set.all %}
@@ -19,8 +17,12 @@
 {% if copy.status != 'a' %}<p><strong>Due to be returned:</strong> {{copy.due_back}}</p>{% endif %}
 <p><strong>Imprint:</strong> {{copy.imprint}}</p>
 <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
-
 {% endfor %}
+<br>
+<h4> Have you read this book? Post a review!</h4>
+<p><strong>Review:</strong><br><a href="{% url 'book_reviews' book.id %}" class="button">Click Here</a></a></p>
+<div style="margin-left:20px;margin-top:20px">
+
 </div>
 {% endblock %}
 

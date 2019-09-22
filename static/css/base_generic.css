@@ -3,4 +3,164 @@
     padding: 0;
     list-style: none;
 }
+/*.detail_book_reviews_title {*/
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+    /*font-size: 20px;*/
+    /*display:block;*/
+    /*font-weight: bold;*/
+/*}*/
+/*.detail_book_reviews{*/
+        /*width: 500px;*/
+        /*height: 300px;*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+        /*margin-top: 20px;*/
+        /*margin-bottom: 20px;*/
+/*}*/
+ .button {
+         background-color: #1c87c9;
+         border: none;
+         color: white;
+         padding: 20px 34px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+ }
+ body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+    background-color: #435a6b;
+}
 
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    font-size: 25px;
+    width: 8em;
+    height: 2em;
+    color: orange;
+    border-left: 0.08em solid;
+    position: relative;
+    margin-top: 0.8em;
+    cursor: pointer;
+}
+
+li::before,
+li::after
+ {
+    content: '';
+    position: absolute;
+    width: inherit;
+    border-left: inherit;
+    z-index: -1;
+}
+
+li::before {
+    height: 80%;
+    top: 10%;
+    left: calc(-0.15em - 0.08em * 2);
+    filter: brightness(0.8);
+}
+
+li::after {
+    height: 60%;
+    top: 20%;
+    left: calc(-0.15em * 2 - 0.08em * 3);
+    filter: brightness(0.6);
+}
+
+li span {
+    position: relative;
+    height: 120%;
+    top: -10%;
+    box-sizing: border-box;
+    border: 0.08em solid;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
+    transition: 0.3s;
+}
+
+li:hover span {
+    transform: translateX(0.15em);
+}
+
+
+.cl-effect-14 a {
+	padding: 0 20px;
+	height: 45px;
+	line-height: 45px;
+}
+
+.cl-effect-14 a::before,
+.cl-effect-14 a::after {
+	position: absolute;
+	width: 45px;
+	height: 2px;
+	background: #fff;
+	content: '';
+	opacity: 0.2;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	pointer-events: none;
+}
+
+.cl-effect-14 a::before {
+	top: 0;
+	left: 0;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+.cl-effect-14 a::after {
+	right: 0;
+	bottom: 0;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+	-webkit-transform-origin: 100% 0;
+	-moz-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+}
+
+.cl-effect-14 a:hover::before,
+.cl-effect-14 a:hover::after,
+.cl-effect-14 a:focus::before,
+.cl-effect-14 a:focus::after {
+	opacity: 1;
+}
+
+.cl-effect-14 a:hover::before,
+.cl-effect-14 a:focus::before {
+	left: 50%;
+	-webkit-transform: rotate(0deg) translateX(-50%);
+	-moz-transform: rotate(0deg) translateX(-50%);
+	transform: rotate(0deg) translateX(-50%);
+}
+
+.cl-effect-14 a:hover::after,
+.cl-effect-14 a:focus::after {
+	right: 50%;
+	-webkit-transform: rotate(0deg) translateX(50%);
+	-moz-transform: rotate(0deg) translateX(50%);
+	transform: rotate(0deg) translateX(50%);
+}

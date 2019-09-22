@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from django.conf import settings
+from users import views
+from django.conf.urls import url
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.views.generic import RedirectView
@@ -30,6 +32,9 @@ urlpatterns = [
     # Login and Logout
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='commons/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='main'), name='logout'),
+
+    # review Page
+    path('reviews/', TemplateView.as_view(template_name='reviews.html'), name='reviews'),
 
     # home Page
     path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
@@ -46,6 +51,7 @@ urlpatterns = [
         ),
         name='change_password'
     ),
+    # url(r'^book/(\d+)', views.book_reviews, name='book_reviews'),
 
     # Forgot Password
     path('password-reset/',
@@ -74,11 +80,6 @@ urlpatterns = [
 
     # Social Auth
     path('auth/', include('social_django.urls', namespace='social')),
-
-    # path('binder/', include('binder.urls')),
-# path('', RedirectView.as_view(url='/', permanent=True)),
-
-    # path('', RedirectView.as_view(url='/', permanent=True)),
 
 ]
 

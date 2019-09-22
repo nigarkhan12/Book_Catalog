@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from .models import Review
 
 
 # Sign Up Form
@@ -46,7 +47,6 @@ class SignUpForm(UserCreationForm):
         return email
 
 
-
 # Profile Form
 class ProfileForm(forms.ModelForm):
 
@@ -56,3 +56,10 @@ class ProfileForm(forms.ModelForm):
             'username',
             'email',
             ]
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 5, 'cols': 10}),  # this is changeble.
+        }
+
+
+class ReviewForm(forms.Form):
+    text = forms.CharField(widget=forms.Textarea, label='')
