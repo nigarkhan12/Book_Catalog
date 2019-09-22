@@ -38,7 +38,7 @@
    {% if user.is_staff %}
    <hr />
    <ul class="sidebar-nav">
-       <li><span>Staff</span></li>
+       Staff
    {% if perms.catalog.can_mark_returned %}
        <li><span><a href="{% url 'all-borrowed' %}">All borrowed</a></span></li>
    {% endif %}

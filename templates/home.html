@@ -17,22 +17,19 @@
         <ul class="main-menu">
 			<li class="sub-menu sub-menu-1"><a href="#">{{ user.username }} Info</a>
 				<ul class="sub-menu-layout sub-menu-layout-1">
-					<li><a href="#">Plumbing</a></li>
 					<li class="sub-menu sub-menu-2"><a href="#">Update</a>
 						<ul class="sub-menu-layout sub-menu-layout-2">
-							<li><a href="{% url 'profile' user.id %}">Edit Profile</a></li>
+							<li><a href="{% url 'profile' user.pk %}">Edit Profile</a></li>
 							<li><a href="{% url 'change_password' %}">Change Password</a></li>
-							<li><a href="#">Industrial</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Electrical</a></li>
 				</ul>
 			</li>
             <li><a href="{% url 'books' %}">All Books</a></li>
 			<li><a href="{% url 'authors' %}">All Authors</a></li>
-            <li><a href="#">Pricing</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
 		</ul>
+
     </div>
 
 </body>

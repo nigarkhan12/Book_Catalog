@@ -39,6 +39,9 @@ urlpatterns = [
     # home Page
     path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
 
+    # Guide Me Page
+    path('guide/', TemplateView.as_view(template_name='guide.html'), name='guide'),
+
     # Main Page
     path('', TemplateView.as_view(template_name='main.html'), name='main'),
 

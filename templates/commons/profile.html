@@ -7,7 +7,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update</button>
+        <button type="submit" class="b02_slide_in button_base">Update</button>
         <br><br>
         <a href="{% url 'home' %}">Back</a>
     </form>

@@ -54,7 +54,6 @@ class SignUpView(View):
             user.email_user(subject, message)
 
             messages.success(request, ('Please Confirm your email to complete registration. By copy paste the url from console to browser.'))
-
             return redirect('login')
         return render(request, self.template_name, {'form': form})
 
@@ -76,8 +75,8 @@ class ActivateAccount(View):
             messages.success(request, ('Your account have been confirmed.'))
             return redirect('home')
         else:
-            messages.warning(request, ('The confirmation link was invalid, possibly because it has already been used.'))
-            return redirect('home')
+            messages.warning(request, ('Something went wrong!!!. Please try with Social Authentication'))
+            return redirect('login')
 
 
 # Edit Profile View
