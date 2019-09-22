@@ -42,6 +42,7 @@ class Book(models.Model):
     # ManyToManyField used because a genre can contain many books and a Book can cover many genres.
     # Category class has already been defined so we can specify the object above.
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
+    cover_image = models.ImageField(upload_to='books/', default='books/empty_cover.jpg')
 
     def display_genre(self):
         """Creates a string for the Category. This is required to display genre in Admin."""
@@ -66,7 +67,6 @@ class BookInstance(models.Model):
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    cover_image = models.ImageField(upload_to='books/', default='books/empty_cover.jpg')
 
     @property
     def is_overdue(self):
